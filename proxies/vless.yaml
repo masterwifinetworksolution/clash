@@ -1,0 +1,76 @@
+# Vless WS (SNI)
+- name: Vless WS
+  server: SERVER.COM
+  port: 443
+  type: vless
+  uuid: UUID
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: BUGSNI.COM
+  network: ws
+  ws-opts:
+    path: /PATH
+    headers:
+      Host: BUGSNI.COM
+
+# Vless WS (CDN)
+- name: Vless WS
+  server: IPCDN/BUGCDN.COM
+  port: 443
+  type: vless
+  uuid: UUID
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: SERVER.COM
+  network: ws
+  ws-opts:
+    path: /PATH
+    headers:
+      Host: SERVER.COM
+
+# Vless WS (CDN) Non TLS
+- name: Vless WS Non TLS
+  server: IPCDN/BUGCDN.COM
+  port: 80
+  type: vless
+  uuid: 81f1f510-3ca7-4734-8956-0f4fce670af5
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: SERVER.COM
+  network: ws
+  ws-opts:
+    path: /PATH
+    headers:
+      Host: SERVER.COM
+  udp: true
+
+# Vless XTLS (SNI)
+- name: Vless XTLS
+  server: SERVER.COM
+  port: 443
+  type: vless
+  uuid: UUID
+  cipher: auto
+  tls: true
+  flow: xtls-rprx-direct
+  skip-cert-verify: true
+  servername: BUGSNI.COM
+
+# Vless gRPC (SNI)
+- name: Vless gRPC
+  server: SERVER.COM
+  port: 443
+  type: vless
+  uuid: UUID
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: BUGSNI.COM
+  network: grpc
+  grpc-opts:
+  grpc-mode: gun
+  grpc-service-name: NAMAGRPC
+  udp: true

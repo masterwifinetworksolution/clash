@@ -1,0 +1,34 @@
+proxies:
+# Shadowsocks Tanpa Plugin
+- name: Shadowsocks Tanpa Plugin
+  type: ss
+  server: SERVER.COM
+  port: 34963
+  cipher: chacha20-ietf-poly1305
+  password: PASSWORD
+  udp: true
+
+# Shadowsocks Plugin Obfs
+- name: Shadowsocks Plugin Obfs
+  type: ss
+  server: SERVER.COM
+  port: 32033
+  cipher: chacha20-ietf-poly1305
+  password: PASSWORD
+  plugin: obfs
+  plugin-opts:
+    mode: tls
+    host: BUGSNI.COM
+
+# ShadowsocksR (SNI)
+- name: ShadowsocksR
+  server: SERVER.COM
+  port: 1235
+  type: ssr
+  cipher: AES-256-CTR
+  password: PASSWORD
+  protocol: origin
+  obfs: tls1.2_ticket_auth
+  protocol-param: "#"
+  obfs-param: BUGSNI.COM
+  udp: true

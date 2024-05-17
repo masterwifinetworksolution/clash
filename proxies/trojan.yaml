@@ -1,0 +1,54 @@
+proxies:
+# Trojan WS SNI
+- name: Trojan WS
+  server: SERVER.COM
+  port: 443
+  type: trojan
+  password: PASSWORD
+  skip-cert-verify: true
+  sni: BUGSNI.COM
+  network: ws
+  ws-opts:
+    path: /PATH
+    headers:
+      Host: BUGSNI.COM
+  udp: true
+
+# Trojan GO/WS (CDN)
+- name: Trojan GO-WS
+  server: IPCDN/BUGCDN.COM
+  port: 443
+  type: trojan
+  password: PASSWORD
+  network: ws
+  sni: SERVER.COM
+  skip-cert-verify: true
+  udp: true
+  ws-opts:
+    path: /PATH
+    headers:
+        Host: SERVER.COM
+
+# Trojan XTLS (SNI)
+- name: Trojan XTLS
+  server: SERVER.COM
+  port: 443
+  type: trojan
+  password: PASSWORD
+  flow: xtls-rprx-direct
+  skip-cert-verify: true
+  sni: BUGSNI.COM
+  udp: true
+
+# Trojan gRPC (SNI)
+- name: Trojan gRPC
+  type: trojan
+  server: SERVER.COM
+  port: 443
+  password: PASSWORD
+  udp: true
+  sni: BUGSNI.COM
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: NAMAGRPC

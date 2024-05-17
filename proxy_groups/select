@@ -1,0 +1,14 @@
+- name: Proxy
+  type: select
+  disable-udp: false
+  proxies:
+  - ETH
+  - USB
+  - WWAN
+  - BEST PING
+  - FALLBACK
+  - LOADBALANCE
+  - RELAY
+  use:
+  - Proxy Provider1
+  - Proxy Provider2

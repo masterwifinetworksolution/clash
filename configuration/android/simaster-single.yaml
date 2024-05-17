@@ -1,0 +1,250 @@
+---
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+allow-lan: true
+bind-address: "*"
+mode: script
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+external-ui: folder
+secret: 
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+  - tcp://8.8.8.8:53
+  - tcp://8.8.4.4:53
+hosts:
+  "*.clash.dev": 127.0.0.1
+  ".dev": 127.0.0.1
+  alpha.clash.dev: "::1"
+profile:
+  store-selected: true
+  tracing: true
+  store-fake-ip: true
+dns:
+  enable: true
+  ipv6: false
+  listen: 127.0.0.1:7874
+  default-nameserver:
+  - 114.114.114.114
+  - 8.8.8.8
+  - 1.1.1.1
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  fake-ip-filter:
+  - "*.lan"
+  - localhost.ptlogin2.qq.com
+  - "+.*"
+  fallback-filter:
+    geoip: true
+    ipcidr:
+    - 240.0.0.0/4
+  nameserver:
+  - 114.114.114.114
+  - 8.8.8.8
+  - 1.1.1.1
+  - https://dns.google/dns-query
+  - https://1.1.1.1/dns-query
+  - tls://dns.google
+proxy-providers:
+  Sim:
+    type: http
+    path: ./pribadi.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/pribadi.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 99
+proxy-groups:
+- name: UMUM
+  type: select
+  disable-udp: false
+  proxies:
+  - SELECT
+  - AUTO
+  - FAILOVER
+  - LOADBALANCE
+  - DIRECT
+- name: PORT GAME DAN WA
+  type: select
+  disable-udp: false
+  proxies:
+  - SELECT
+  - AUTO
+  - FAILOVER
+  - LOADBALANCE
+  - DIRECT
+- name: IKLAN DAN PORN
+  type: select
+  disable-udp: false
+  proxies:
+  - REJECT
+  - DIRECT
+  use:
+  - Sim
+- name: SELECT
+  type: url-test
+  disable-udp: false
+  use:
+  - Sim
+  url: https://cp.cloudflare.com/generate_204
+  interval: '99'
+  tolerance: '99'
+- name: AUTO
+  type: url-test
+  disable-udp: false
+  use:
+  - Sim
+  url: https://cp.cloudflare.com/generate_204
+  interval: '99'
+  tolerance: '99'
+- name: FAILOVER
+  type: fallback
+  disable-udp: false
+  use:
+  - Sim
+  url: https://cp.cloudflare.com/generate_204
+  interval: '99'
+- name: LOADBALANCE
+  type: load-balance
+  strategy: round-robin
+  disable-udp: false
+  use:
+  - Sim
+  url: https://cp.cloudflare.com/generate_204
+  interval: '99'
+rule-providers:
+  Game:
+    type: http
+    behavior: domain
+    path: ./rule_provider/Game.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/game.yaml
+    interval: 3600
+  Sosmed:
+    type: http
+    behavior: classical
+    path: ./rule_provider/Sosmed.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/sosmed.yaml
+    interval: 3600
+  Stream:
+    type: http
+    behavior: domain
+    path: ./rule_provider/Stream.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/stream.yaml
+    interval: 3600
+  Olshop:
+    type: http
+    behavior: domain
+    path: ./rule_provider/Olshop.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/olshop.yaml
+    interval: 3600
+  Shopee:
+    type: http
+    behavior: classical
+    path: ./rule_provider/Shopee.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/shopee.yaml
+    interval: 3600
+  Bank:
+    type: http
+    behavior: domain
+    path: ./rule_provider/Bank.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/bank.yaml
+    interval: 3600
+  Chat:
+    type: http
+    behavior: classical
+    path: ./rule_provider/Chat.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/chat.yaml
+    interval: 3600
+  Porn:
+    type: http
+    behavior: domain
+    path: ./rule_provider/Porn.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/porn.yaml
+    interval: 3600
+  Iklan1:
+    type: http
+    behavior: classical
+    path: ./rule_provider/Iklan1.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/iklan1.yaml
+    interval: 3600
+  Iklan2:
+    type: http
+    behavior: classical
+    path: ./rule_provider/Iklan2.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/iklan2.yaml
+    interval: 3600
+  Iklan3:
+    type: http
+    behavior: classical
+    path: ./rule_provider/Iklan3.yaml
+    url: https://raw.githubusercontent.com/yusuftutorial/clash/main/rule_provider/iklan3.yaml
+    interval: 3600
+script:
+  code: |
+    def main(ctx, metadata):
+        ruleset_action = {"Game": "PORT GAME DAN WA",
+            "Chat": "PORT GAME DAN WA",
+            "Sosmed": "UMUM",
+            "Stream": "UMUM",
+            "Olshop": "UMUM",
+            "Shopee": "UMUM",
+            "Bank": "UMUM",
+            "Porn": "IKLAN DAN PORN",
+            "Iklan1": "IKLAN DAN PORN",
+            "Iklan2": "IKLAN DAN PORN",
+            "Iklan3": "IKLAN DAN PORN"
+          }
+
+        port = int(metadata["dst_port"])
+
+        if metadata["network"] == "UDP":
+            if port == 443:
+                ctx.log('[Script] matched QUIC traffic use umum')
+                return "UMUM"
+
+        port_list = [21, 22, 23, 53, 80, 123, 143, 194, 443, 465, 587, 853, 993, 995, 998, 2052, 2053, 2082, 2083, 2086, 2095, 2096, 5222, 5228, 5229, 5230, 8080, 8443, 8880, 8888, 8889]
+        if port not in port_list:
+            ctx.log('[Script] not common port use PORT GAME DAN WA')
+            return "UMUM"
+
+        if metadata["dst_ip"] == "":
+            metadata["dst_ip"] = ctx.resolve_ip(metadata["host"])
+
+        for ruleset in ruleset_action:
+            if ctx.rule_providers[ruleset].match(metadata):
+                return ruleset_action[ruleset]
+
+        if metadata["dst_ip"] == "":
+            return "DIRECT"
+
+        code = ctx.geoip(metadata["dst_ip"])
+        if code == "ID":
+            ctx.log('[Script] Geoip ID')
+            return "UMUM"
+
+        ctx.log('[Script] SIMASTER DUAL MODEM')
+        return "UMUM"
+rules:
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- RULE-SET,Game,PORT GAME DAN WA
+- RULE-SET,Sosmed,UMUM
+- RULE-SET,Stream,UMUM
+- RULE-SET,Olshop,UMUM
+- RULE-SET,Shopee,UMUM
+- RULE-SET,Bank,UMUM
+- RULE-SET,Chat,PORT GAME DAN WA
+- RULE-SET,Porn,IKLAN DAN PORN
+- RULE-SET,Iklan1,IKLAN DAN PORN
+- RULE-SET,Iklan2,IKLAN DAN PORN
+- RULE-SET,Iklan3,IKLAN DAN PORN
+- RULE-SET,Game,PORT GAME DAN WA
+- GEOIP,UMUM
+- MATCH,UMUM

@@ -1,0 +1,8 @@
+proxy-providers:
+  test:
+    type: file
+    path: ./proxy_provider/test.yaml
+    health-check:
+      enable: true
+      interval: 36000
+      url: http://www.gstatic.com/generate_204

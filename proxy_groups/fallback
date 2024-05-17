@@ -1,0 +1,11 @@
+- name: "fallback-auto"
+  type: fallback
+  proxies:
+  - ETH
+  - USB
+  - WWAN
+  use:
+  - Proxy Provider1
+  - Proxy Provider2
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300

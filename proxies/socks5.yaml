@@ -1,0 +1,12 @@
+proxies:
+# Socks5 (SNI)
+- name: Socks5
+  type: socks5
+  server: SERVER.COM
+  port: 443
+  username: USERNAME
+  password: PASSWORD
+  tls: true
+  skip-cert-verify: true
+  udp: true
+  sni: BUGSNI.COM

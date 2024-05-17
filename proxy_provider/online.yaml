@@ -1,0 +1,11 @@
+proxy-providers:
+  provider1:
+    type: http
+    url: "url"
+    interval: 3600
+    path: ./provider1.yaml
+    health-check:
+      enable: true
+      interval: 600
+      lazy: false
+      url: http://www.gstatic.com/generate_204
