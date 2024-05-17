@@ -9,5 +9,5 @@ rules:
 - GEOIP,CN,DIRECT
 - DST-PORT,80,DIRECT
 - SRC-PORT,7777,DIRECT
-- RULE-SET,apple,REJECT # Premium only
+- RULE-SET,apple,REJECT # Khusus core Premium
 - MATCH,auto
