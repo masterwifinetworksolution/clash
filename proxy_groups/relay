@@ -1,9 +1,0 @@
-- name: "relay"
-  type: relay
-  proxies:
-  - ETH
-  - USB
-  - WWAN
-  use:
-  - Proxy Provider1
-  - Proxy Provider2

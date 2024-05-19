@@ -1,8 +1,0 @@
-payload:
-
-  # UPDATE RULE SIMASTER 10-JAN-2024
-  
-  # RULE WHATSAPP
-  - DOMAIN-KEYWORD,whatsapp.com
-  - DOMAIN-KEYWORD,whatsapp.net
-  - DOMAIN-KEYWORD,wa.me
