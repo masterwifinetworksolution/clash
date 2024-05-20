@@ -1,0 +1,6 @@
+payload:
+
+  # > RULE BY SIMASTER
+  - "+.whatsapp.com"
+  - "+.whatsapp.net"
+  - "+.line.me"
