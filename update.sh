@@ -1,4 +1,4 @@
-git add *
-git status
-git commit -m "content update"
-git push -u origin master
+cd /root
+git clone https://github.com/yusuftutorial/openclash.git
+tar -czf openclash.tar.gz
+mv openclash /etc
