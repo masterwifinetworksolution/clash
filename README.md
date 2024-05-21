@@ -4,6 +4,8 @@ Selamat datang di github simaster by Yusuf Tutorial Channel.
 
 Struktur ini sudah rangkumkan untuk ke semua file backup saya.
 
+## Struktur
+
 ```
 openclash
 |
@@ -59,4 +61,13 @@ openclash
 |___ openclash
 |
 |___ simaster.yaml
+```
+
+## Pasang Backup
+
+```
+cd /root
+git clone https://github.com/yusuftutorial/openclash.git
+tar -czf openclash.tar.gz
+mv openclash /etc
 ```
