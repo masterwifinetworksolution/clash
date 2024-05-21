@@ -66,8 +66,9 @@ openclash
 ## Pasang Backup
 
 ```
-cd /root
-git clone https://github.com/yusuftutorial/openclash.git
-tar -czf openclash.tar.gz
-mv openclash /etc
+bash update.sh
 ```
+
+## Atur akun
+
+masuk `Config Editor` lalu pergi ke folder `proxy_provider` yang ada di dalam folder `openclash` kemudian jika sudah mengisi tinggal pergi ke overview dan jalankan openclash
