@@ -65,15 +65,14 @@ openclash
 
 ## Pasang Backup
 
-download [update.sh](blob:https://github.com/7a559adc-5b85-452b-90a0-68bb455743a4)
-
-Kemudian masuk file manager openwrt di folder root lalu upload file `update.sh`.
-
-Setelah itu pergi ke terminal openwrt dan ketikkan perintah berikut:
+Pergi ke terminal openwrt dan ketikkan perintah berikut:
 
 ```
 cd /root
-bash update.sh
+git clone https://github.com/yusuftutorial/openclash.git
+tar -czf Simaster-Backup-20Mei2024.tar.gz
+cd /root/Simaster-Backup-20Mei2024
+mv openclash /etc
 ```
 
 ## Atur akun
