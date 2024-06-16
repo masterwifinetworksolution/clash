@@ -11,6 +11,9 @@
 - [Bank](https://raw.githubusercontent.com/yusuftutorial/clash/master/rule_provider/bank.yaml)
 - [Chat](https://raw.githubusercontent.com/yusuftutorial/clash/master/rule_provider/chat.yaml)
 
+> Cara pasang semua rule clash simaster, ikuti perintah di bawah ini salin dan tempelkan ke terminal openwrt anda
+
 ```yaml
-wget https://github.com/yusuftutorial/clash/rule_provider
+cd /root
+wget https://github.com/yusuftutorial/clash/rule.sh && bash rule.sh
 ```
