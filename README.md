@@ -10,3 +10,7 @@
 - [Online Shop](https://raw.githubusercontent.com/yusuftutorial/clash/master/rule_provider/olshop.yaml)
 - [Bank](https://raw.githubusercontent.com/yusuftutorial/clash/master/rule_provider/bank.yaml)
 - [Chat](https://raw.githubusercontent.com/yusuftutorial/clash/master/rule_provider/chat.yaml)
+
+```yaml
+wget https://github.com/yusuftutorial/clash
+```
