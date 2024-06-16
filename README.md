@@ -12,5 +12,5 @@
 - [Chat](https://raw.githubusercontent.com/yusuftutorial/clash/master/rule_provider/chat.yaml)
 
 ```yaml
-wget https://github.com/yusuftutorial/clash
+wget https://github.com/yusuftutorial/clash/rule_provider
 ```
