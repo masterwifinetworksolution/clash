@@ -1,0 +1,33 @@
+---
+layout: page
+title: Documentation
+permalink: /documentation.html
+---
+
+<hr>
+<div class="container mt-5">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for docs in site.data.documentation %}
+            <tr>
+                <td>{{ docs.name }}</td>
+                <td>{{ docs.type }}</td>
+                <td>
+                    {% if docs.link == "#" %}
+                        <a href="{{ docs.link }}" class="btn btn-danger mt-auto">Closed</a>
+                    {% else %}
+                        <a href="{{ docs.link }}" class="btn btn-success mt-auto">Open</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

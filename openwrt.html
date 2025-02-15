@@ -1,0 +1,140 @@
+---
+layout: openwrts
+title: Openwrt
+---
+
+<style>
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: orange; /* Mengubah warna ikon menjadi oranye */
+  }
+  .card-img-top {
+    object-fit: contain; /* Memastikan foto sesuai ukuran tanpa mengubah rasio aspek */
+    width: 100%; /* Lebar penuh untuk responsif */
+    height: auto; /* Tinggi otomatis sesuai dengan lebar */
+    max-height: 200px; /* Maksimum tinggi gambar diatur sesuai kebutuhan */
+  }
+  .carousel-item .card,
+  .category-panel {
+    width: 100%; /* Lebar penuh untuk responsif */
+    max-width: 90%; /* Lebar maksimum kartu dan panel kategori dalam persentase */
+    margin: auto; /* Menjaga kartu dan panel tetap di tengah */
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5%;
+    height: auto; /* Menjaga tinggi ikon sesuai konten */
+  }
+  .carousel-control-prev {
+    left: -2%; /* Posisikan lebih dekat ke kartu */
+  }
+  .carousel-control-next {
+    right: -2%; /* Posisikan lebih dekat ke kartu */
+  }
+  .category-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 20px; /* Jarak tambahan antara tombol dan panel kategori */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  .category-panel:nth-child(odd) {
+    background-color: #ff5722; /* Warna panel ganjil */
+  }
+  .category-panel:nth-child(even) {
+    background-color: #4caf50; /* Warna panel genap */
+  }
+  .btn-category {
+    padding: 5px 10px; /* Menyesuaikan ukuran tombol */
+    font-size: 0.875rem; /* Mengurangi ukuran font tombol */
+    margin: 0; /* Menghapus jarak tombol */
+  }
+  .category-title {
+    flex-grow: 1;
+    text-align: left; /* Menyelaraskan teks kategori ke kiri */
+  }
+  @media (min-width: 768px) {
+    .card-img-top {
+      max-height: 300px; /* Sesuaikan tinggi maksimum saat mode desktop */
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="row mb-4 mt-4">
+    <div class="col-12">
+      <h5>Kategori Openwrt</h5>
+      <div id="categoryListCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+          {% assign categories = site.data.devices | map: "category" | uniq %}
+          {% for category in categories %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="card">
+              <img class="card-img-top" src="/assets/images/banner.jpg" alt="{{ category | capitalize }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ category | capitalize }}</h5>
+                <a href="/openwrt/{{ category }}" class="btn btn-primary">Lihat Kategori {{ category }}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#categoryListCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#categoryListCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <h5>Daftar Openwrt</h5>
+      <div class="row">
+        {% assign devices = site.data.devices | group_by: "category" %}
+        {% for category in devices %}
+          <div class="col-12">
+            <div class="category-panel">
+              <span class="category-title">{{ category.name | capitalize }}</span>
+              <a href="/openwrt/{{ category.name }}" class="btn btn-secondary btn-category">Lihat Openwrt {{ category.name | capitalize }} Selengkapnya</a>
+            </div>
+            <div id="productListCarousel-{{ forloop.index }}" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                {% for device in category.items limit: 6 %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <div class="card mb-4 mx-auto"> <!-- Menjaga lebar yang sama dengan panel kategori -->
+                    <img class="card-img-top" src="{{ device.image | default: '/assets/images/banner.jpg' }}" alt="{{ product.name }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ device.name }}</h5>
+                      <p class="card-text">Format: {{ device.format }}</p>
+                      <p class="card-text">Size: {{ device.size }}</p>
+                      <a href="{{ device.link }}" class="btn btn-primary" target="_blank">Download</a>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#productListCarousel-{{ forloop.index }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#productListCarousel-{{ forloop.index }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

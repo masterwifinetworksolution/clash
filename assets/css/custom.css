@@ -1,0 +1,272 @@
+/* Gaya untuk blok kode */
+.highlight {
+  background-color: #f6f8fa;  /* Warna background */
+  border-radius: 6px;         /* Sudut kotak yang melengkung */
+  border: 1px solid #e1e4e8;  /* Border kotak */
+  padding: 5px;              /* Padding dalam kotak */
+  overflow-x: auto;           /* Scroll horizontal jika kode terlalu panjang */
+  font-family: 'Courier New', monospace; /* Font monospace */
+  font-size: 16px;            /* Ukuran font */
+  line-height: 1.5;           /* Jarak antar baris */
+  margin-top: 15px;
+  margin-bottom: 1px;        /* Jarak dari elemen bawah */
+}
+
+/* Gaya untuk teks di dalam blok kode */
+.highlight code {
+  color: #24292e;             /* Warna teks */
+  background-color: transparent; /* Background transparan */
+  padding: 0;                 /* Hilangkan padding default */
+}
+
+/* Gaya untuk nomor baris (jika menggunakan linenos) */
+.highlight .lineno {
+  color: #6a737d;             /* Warna nomor baris */
+  padding-right: 16px;        /* Jarak antara nomor baris dan kode */
+  user-select: none;          /* Mencegah nomor baris dipilih */
+}
+
+.code-block {
+  position: relative;
+}
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.copy-button:hover {
+  background: #0056b3;
+}
+
+.menu-icon {
+      margin-right: 10px; /* Menambahkan margin kanan untuk memindahkan ikon menu ke pinggir */
+    }
+
+    /* Pastikan konten dan sidebar tidak tertutup oleh navigasi */
+    @media (min-width: 768px) {
+      main {
+        margin-top: 60px; /* Sesuaikan tinggi sesuai dengan tinggi navigasi */
+      }
+      aside {
+        margin-top: 60px; /* Sesuaikan tinggi sesuai dengan tinggi navigasi */
+      }
+      #sidebar {
+        width: 100%; /* Atur lebar penuh sidebar */
+      }
+    }
+    
+    .toc-panel {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .toc-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .toc-list-item {
+      margin: 5px 0;
+    }
+
+    .toc-link {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    /* Font dan warna teks konten */
+
+/* Default (light theme) */
+body[data-bs-theme='light'] h1, 
+body[data-bs-theme='light'] h2, 
+body[data-bs-theme='light'] h3, 
+body[data-bs-theme='light'] h4, 
+body[data-bs-theme='light'] h5, 
+body[data-bs-theme='light'] h6 {
+    font-family: 'Nico Moji', sans-serif;
+    color: #0f9696; /* Warna cerah untuk judul */
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+body[data-bs-theme='light'] h1 { font-size: 1.75rem; }  /* Adjusted size */
+body[data-bs-theme='light'] h2 { font-size: 1.5rem; }  /* Adjusted size */
+body[data-bs-theme='light'] h3 { font-size: 1.25rem; }  /* Adjusted size */
+body[data-bs-theme='light'] h4 { font-size: 1rem; }  /* Adjusted size */
+body[data-bs-theme='light'] h5 { font-size: 0.875rem; }  /* Adjusted size */
+body[data-bs-theme='light'] h6 { font-size: 0.75rem; }  /* Adjusted size */
+
+/* Dark theme */
+body[data-bs-theme='dark'] h1, 
+body[data-bs-theme='dark'] h2, 
+body[data-bs-theme='dark'] h3, 
+body[data-bs-theme='dark'] h4, 
+body[data-bs-theme='dark'] h5, 
+body[data-bs-theme='dark'] h6 {
+    font-family: 'Nico Moji', sans-serif;
+    color: #ffcc00; /* Warna cerah untuk judul pada mode gelap */
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+body[data-bs-theme='dark'] h1 { font-size: 1.75rem; }  /* Adjusted size */
+body[data-bs-theme='dark'] h2 { font-size: 1.5rem; }  /* Adjusted size */
+body[data-bs-theme='dark'] h3 { font-size: 1.25rem; }  /* Adjusted size */
+body[data-bs-theme='dark'] h4 { font-size: 1rem; }  /* Adjusted size */
+body[data-bs-theme='dark'] h5 { font-size: 0.875rem; }  /* Adjusted size */
+body[data-bs-theme='dark'] h6 { font-size: 0.75rem; }  /* Adjusted size */
+
+/* Default (light theme) */
+body[data-bs-theme='light'] p {
+  font-size: 16px;
+  color: dark; /* Warna teks paragraf */
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+/* Dark theme */
+body[data-bs-theme='dark'] p {
+  font-size: 16px;
+  color: light; /* Warna teks paragraf */
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+    /* Tautan URL */
+    a {
+        color: #1bd688; /* Warna biru untuk tautan */
+        text-decoration: none;
+        transition: color 0.1s ease, text-shadow 0.1s ease;
+    }
+
+    a:hover, a:focus {
+        color: #a5fc04; /* Warna saat tautan di-hover */
+        text-shadow: 1px 1px 3px #000000; /* Efek bayangan saat di-hover */
+    }
+
+    /* Teks warna-warni */
+    .rainbow-text {
+        font-weight: bold;
+        background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .img-responsive {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* pre code copy */
+    .code-container {
+      margin-bottom: 5px;
+      background-color: grey;
+    }
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: dark;
+      color: #ffffff;
+      padding: 10px;
+    }
+    .language-label {
+      font-weight: bold;
+    }
+    .code-block {
+      background-color: #2d2d2d;
+      color: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    
+.custom-background {
+  background-color: #f8f9fa; /* Warna latar belakang khusus */
+  border: 2px solid #6c757d; /* Warna border khusus */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow khusus */
+}
+
+/* Tambahkan gaya lainnya yang diinginkan */
+.custom-background .card-title a {
+  color: #28a745; /* Warna teks judul khusus */
+}
+.custom-background .btn-success {
+  background-color: #17a2b8; /* Warna tombol khusus */
+  border-color: #17a2b8; /* Warna border tombol khusus */
+}
+
+.grid-background {
+  background-color: #ffffff; /* Warna latar belakang khusus */
+  border: 2px solid #6c757d; /* Warna border khusus */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow khusus */
+}
+
+/* Tambahkan gaya lainnya yang diinginkan */
+.grid-background .card-title a {
+  color: #099e60; /* Warna teks judul khusus */
+}
+.grid-background .btn-success {
+  background-color: #17a2b8; /* Warna tombol khusus */
+  border-color: #17a2b8; /* Warna border tombol khusus */
+}
+
+/* pengaturan navigasi agar tidak tertutup sidebar */
+#mainNavbar {
+  z-index: 1030; /* Sesuaikan angka sesuai kebutuhan */
+}
+
+#mainNavbar .dropdown-menu {
+  z-index: 1050; /* Lebih tinggi dari navbar untuk memastikan dropdown tampil di depan */
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.tos-panel {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  overflow: auto;
+  background-color: rgb(255,255,255);
+  border: 1px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tos-content {
+  padding: 20px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

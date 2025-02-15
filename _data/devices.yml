@@ -1,0 +1,66 @@
+- image: 
+  name: sha256sums
+  format: sha
+  size: 1KB
+  link: https://drive.google.com/file/d/11uPtPWTwzEQxrZ-D-qZwh5-sw9GZ7Yz3/view?usp=sharing
+  category: x86
+- image: 
+  name: profiles.json
+  format: json
+  size: 2KB
+  link: https://drive.google.com/file/d/1WOFfuzFfjgZO_AirhwhgpUe2-4fIq5ls/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic.manifest
+  format: manifest
+  size: 11KB
+  link: https://drive.google.com/file/d/1iY-XpjzdwuI6tTG0UbIJk1tBPB9rYcIr/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-squashfs-rootfs.img.gz
+  format: gzip
+  size: 85.7MB
+  link: https://drive.google.com/file/d/1JQVXpJb3f0S2d5hBLn3_6loUL0gRsLXZ/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-squashfs-combined.img.gz
+  format: gzip
+  size: 91.4MB
+  link: https://drive.google.com/file/d/16WHh0GaXlyUeLQiWPL8Uh1hI0Cr_fl84/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-squashfs-combined-efi.img.gz
+  format: gzip
+  size: 91.6MB
+  link: https://drive.google.com/file/d/1o4gcwuJ83QU13X60dfzzonLbQ2D2kmuW/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-rootfs.tar.gz
+  format: gzip
+  size: 106.7MB
+  link: https://drive.google.com/file/d/1pD2lHNStmMLRsCQwEnhvRSgRp4THm42u/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-kernel.bin
+  format: bin
+  size: 5.4MB
+  link: https://drive.google.com/file/d/1JjT16wLNPSNGkG4UFIWJaVERtks88uK8/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-ext4-rootfs.img.gz
+  format: gzip
+  size: 110.5MB
+  link: https://drive.google.com/file/d/1YAT98dJyQr316d4vbd2Rfq0ZeRGynZIL/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-ext4-combined.img.gz
+  format: gzip
+  size: 114.2MB
+  link: https://drive.google.com/file/d/1UJ_pUqV2O2-_4-q-On7_diRuc-uctUB4/view?usp=sharing
+  category: x86
+- image: 
+  name: openwrt-23.05.5-x86-64-generic-ext4-combined-efi.img.gz
+  format: gzip
+  size: 114.4MB
+  link: https://drive.google.com/file/d/14FrqcxUTLX1adnVzfM_jToVPeIXOgKdr/view?usp=sharing
+  category: x86

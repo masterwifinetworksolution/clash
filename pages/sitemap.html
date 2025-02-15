@@ -1,0 +1,60 @@
+---
+layout: page
+title: Sitemap
+permalink: /sitemap/
+---
+
+<div class="container mt-5">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
+            {% for category in categories %}
+                {% for post in site.posts %}
+                    {% if post.categories contains category %}
+                        <tr id="category-{{ category | replace: ' ', '-' | downcase }}">
+                            <td><a href="{{ post.url }}">{{ post.title }}</a></td>
+                            <td>{{ category }}</td>
+                            <td>{{ post.date | date: '%d %B %Y' }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><b>CATATAN:</b><br>Jika anda tidak menemukan yang anda cari, silahkan hubungi kami melalui <a href="/contact.html" target="_blank">Contact</a>.</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "paging": true,
+            "searching": true
+        });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+        var filter = this.value.toLowerCase();
+        var categories = document.querySelectorAll('tbody tr');
+
+        categories.forEach(function(row) {
+            var title = row.querySelector('td a').textContent.toLowerCase();
+            var category = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+            if (title includes(filter) || category includes(filter)) {
+                row style.display = "";
+            } else {
+                row style.display = "none";
+            }
+        });
+    });
+</script>

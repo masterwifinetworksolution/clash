@@ -1,0 +1,78 @@
+---
+layout: openwrts
+title: Openwrt X86 64
+---
+
+<style>
+  .category-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6; /* Border panel */
+    border-radius: 5px; /* Sudut membulat pada panel */
+  }
+  .category-panel:nth-child(1) {
+    background-color: #ff5722; /* Warna panel pertama */
+  }
+  .category-panel:nth-child(2) {
+    background-color: #4caf50; /* Warna panel kedua */
+  }
+  .category-panel:nth-child(3) {
+    background-color: #2196f3; /* Warna panel ketiga */
+  }
+  .category-panel:nth-child(4) {
+    background-color: #ffc107; /* Warna panel keempat */
+  }
+  .category-panel:nth-child(5) {
+    background-color: #9c27b0; /* Warna panel kelima */
+  }
+  .category-panel:nth-child(6) {
+    background-color: #795548; /* Warna panel keenam */
+  }
+  .category-title {
+    font-size: 1.25rem; /* Ukuran font nama kategori */
+    font-weight: bold;
+    color: #ffffff; /* Warna teks nama kategori */
+  }
+  .btn-category {
+    padding: 5px 10px; /* Menyesuaikan ukuran tombol */
+    font-size: 0.875rem; /* Mengurangi ukuran font tombol */
+    color: #ffffff; /* Mengatur warna teks tombol menjadi putih */
+    background-color: #6c757d; /* Warna latar belakang tombol */
+    border: none; /* Menghapus border tombol */
+  }
+  .btn-category:hover {
+    background-color: #5a6268; /* Warna latar belakang tombol saat hover */
+  }
+</style>
+
+<div class="container" style="margin-top: 20px;">
+  <!-- Panel Nama Kategori dan Tombol Kembali -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="category-panel">
+        <span class="category-title">Openwrt X86 64</span>
+        <a href="/openwrt/" class="btn btn-secondary btn-category">Kembali ke Kategori Utama</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    {% for device in site.data.devices %}
+      {% if device.category == "x86" %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img class="card-img-top" src="{% if device.image %}{{ device.image }}{% else %}/assets/images/banner.jpg{% endif %}" alt="{{ device.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ device.name }}</h5>
+              <p class="card-text">Format: {{ device.format }}</p>
+              <p class="card-text">Size: {{ device.size }}</p>
+              <a href="{{ device.link }}" class="btn btn-primary" target="_blank">Download</a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

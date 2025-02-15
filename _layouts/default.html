@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+{% include head.html %}
+<body data-bs-theme="light">
+  <style>
+    .container-fluid {
+      margin-top: 50px; /* Atau gunakan padding-top */
+    }
+  </style>
+  {% include navbar.html %}
+  <div class="container-fluid">
+    <div class="row">
+      <main role="main" class="col-md-8 col-lg-9 px-md-4 bg-light text-dark">
+        {{ content }}
+      </main>
+
+      <aside class="col-md-4 col-lg-3 px-md-4 bg-light text-dark">
+        {% include sidebar.html %}
+      </aside>
+    </div>
+  </div>
+
+  {% include tos.html %} <!-- Menyertakan file TOS di sini -->
+
+  {% include footer.html %}
+  {% include javascript.html %}
+</body>
+</html>

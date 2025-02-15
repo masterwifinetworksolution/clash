@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title text-light">Daftar Isi Konten</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            {% assign nodes = include.html | strip | split: '<h' %}
+            {% assign lastLevel = 0 %}
+            {% assign minHeader = include.h_min | default: 1 %}
+            {% assign maxHeader = include.h_max | default: 6 %}
+
+            {% for node in nodes %}
+                {% if node != "" %}
+                    {% assign currLevel = node | replace: '"', '' | slice: 0, 1 | times: 1 %}
+                    {% if currLevel >= minHeader and currLevel <= maxHeader %}
+                        {% assign headerContent = node | split: '</h' | first | split: '>' | last %}
+                        {% capture itemId %}{{ headerContent | downcase | replace: ' ', '-' | replace: '<', '' | replace: '>', '' | replace: '/', '' | replace: '.', '' | replace: '#', '' }}{% endcapture %}
+                        {% if currLevel > lastLevel %}
+                            <ul class="list-group">
+                        {% elsif currLevel < lastLevel %}
+                            </li></ul>
+                        {% else %}
+                            </li>
+                        {% endif %}
+                        <li class="list-group-item bg-dark">
+                            <a class="text-warning" href="#{{ itemId }}">{{ headerContent }}</a>
+                        {% assign lastLevel = currLevel %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% for i in (lastLevel..minHeader) %}
+                </li></ul>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

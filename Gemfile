@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'jekyll-feed'
+gem 'jekyll-seo-tag'
+gem 'jekyll-paginate'
+gem 'jekyll-sitemap'
+gem 'jekyll-toc'
+gem 'jekyll-reading-time'
+gem 'jekyll-time-to-read'
+gem 'jekyll-google_search_console_verification_file'
+gem 'faraday-retry'

@@ -1,0 +1,141 @@
+---
+layout: page
+title: "Download Termux Boot"
+permalink: /download-termux-boot/
+---
+
+<div class="adsense">
+
+<!-- Respondsive -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-1794381705838564"
+    data-ad-slot="5202041315"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+  </ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+</div>
+
+<p>Menyiapkan download, Mohon tunggu selama <span id="countdown">10</span> detik...</p>
+
+<div class="adsense">
+
+<!-- Respondsive -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-1794381705838564"
+    data-ad-slot="5202041315"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+  </ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+</div>
+
+<p>OpenWRT adalah sistem operasi berbasis Linux yang dirancang untuk digunakan pada perangkat embedded, seperti router. Dengan OpenWRT, Anda dapat menyesuaikan dan mengoptimalkan perangkat Anda sesuai kebutuhan.</p>
+
+<h3>Persiapan Lingkungan</h3>
+
+<p>1. Instalasi Prasyarat: Pastikan Anda memiliki alat dan perpustakaan yang diperlukan. Di Ubuntu, Anda dapat menginstalnya dengan perintah berikut:</p>
+
+<pre>sudo apt-get update
+sudo apt-get install build-essential libncurses5-dev gawk git subversion libssl-dev gettext libz-dev file</pre>
+
+<p>2. Clone Repositori OpenWRT: Unduh source code OpenWRT dengan perintah:</p>
+
+<pre>git clone https://git.openwrt.org/openwrt/openwrt.git
+cd openwrt</pre>
+
+<h3>Membangun Image</h3>
+
+<p>1. Update dan Install Feeds: OpenWRT menggunakan feeds untuk mengelola paket. Jalankan perintah:</p>
+
+<pre>./scripts/feeds update -a
+./scripts/feeds install -a</pre>
+
+<p>2. Konfigurasi Build: Gunakan konfigurasi build menu:</p>
+
+<pre>make menuconfig</pre>
+
+<p>Pilih target perangkat yang ingin Anda build. Misalnya, untuk TP-Link TL-WR841N:</p>
+
+<div class="adsense">
+
+<!-- Respondsive -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-1794381705838564"
+    data-ad-slot="5202041315"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+  </ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+</div>
+
+<div id="download-section" style="display:none;">
+    <h3>Download File</h3>
+    <a href="https://f-droid.org/repo/com.termux.boot_1000.apk"><button class="btn btn-success mt-auto">Klik di sini untuk mengunduh file</button></a>
+</div>
+
+<div class="adsense">
+
+<!-- Respondsive -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-1794381705838564"
+    data-ad-slot="5202041315"
+    data-ad-format="auto"
+    data-full-width-responsive="true">
+  </ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+</div>
+
+<br>
+<ul>
+<li>Target System: Atheros AR7xxx/AR9xxx</li>
+<li>Subtarget: Generic</li>
+<li>Target Profile: TP-Link TL-WR841N/ND v9</li>
+</ul>
+
+<p>3. Mulai Build: Mulai proses build dengan menjalankan perintah:</p>
+
+<pre>make</pre>
+
+<p>Proses ini akan memakan waktu beberapa jam tergantung pada kecepatan sistem Anda.</p>
+
+<h3>Menggunakan Image yang Dibangun</h3>
+
+<p>Setelah proses build selesai, Anda akan menemukan image hasil build di direktori <code>bin/targets</code>. Anda dapat meng-upload image ini ke perangkat Anda melalui antarmuka web router atau menggunakan perintah sysupgrade pada router yang sudah menjalankan OpenWRT.</p>
+
+<script>
+    // Hitung mundur waktu
+    var timeLeft = 15;
+    var elem = document.getElementById('countdown');
+    var downloadSection = document.getElementById('download-section');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+        if (timeLeft == 0) {
+            clearTimeout(timerId);
+            elem.innerHTML = "Waktu habis!";
+            downloadSection.style.display = "block"; // Tampilkan tombol download
+            window.scrollTo(0, downloadSection.offsetTop); // Geser ke bawah ke tombol download
+        } else {
+            elem.innerHTML = timeLeft;
+            timeLeft--;
+        }
+    }
+</script>

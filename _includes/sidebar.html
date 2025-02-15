@@ -1,0 +1,98 @@
+<nav id="sidebar" class="col-md-4 col-lg-3 d-md-block sidebar sticky-top bg-light text-dark" style="margin-bottom: 20px;">
+  <div class="sticky-top" style="margin-top: 20px;">
+    <!-- statistic -->
+    <div class="card mb-3">
+      <div class="card-header">
+        Visitor Statistics
+      </div>
+      <div class="card-body">
+        <a href="http://s01.flagcounter.com/more/Bn">
+          <img src="https://s01.flagcounter.com/count2/Bn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_30/viewers_3/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0">
+        </a>
+      </div>
+    </div>
+
+    <!-- accordion sidebar group -->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      
+      <!-- Recent posts -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Recent Posts
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <ul class="list-group list-group-flush">
+            {% assign sorted_posts = site.posts | sort: 'views' | reverse %}
+            {% for post in sorted_posts limit: 7 %}
+              <li class="list-group-item">
+                <span class="badge bg-primary">{{ forloop.index }}</span>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+                <span class="badge bg-info float-end">{{ post.views }} views</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+<!-- Repository Simaster -->
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+      Repository Simaster
+    </button>
+  </h2>
+  <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+    <div class="accordion-body">
+      <ul class="list-group list-group-flush" id="repo-list">
+        <!-- Repositories will be dynamically injected here -->
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+  // Function to fetch repositories from GitHub API
+  async function fetchRepositories() {
+    const response = await fetch('https://api.github.com/users/masterwifinetworksolution/repos');
+    const repositories = await response.json();
+    const repoList = document.getElementById('repo-list');
+    
+    repositories.forEach((repo, index) => {
+      const listItem = document.createElement('li');
+      listItem.className = 'list-group-item';
+      
+      const badge = document.createElement('span');
+      badge.className = 'badge bg-primary';
+      badge.textContent = index + 1;
+      
+      const link = document.createElement('a');
+      link.href = repo.html_url;
+      link.textContent = repo.name;
+      
+      listItem.appendChild(badge);
+      listItem.appendChild(link);
+      repoList.appendChild(listItem);
+    });
+  }
+
+  // Call the function to fetch and display repositories
+  fetchRepositories();
+</script>
+
+    <!-- Ad panel -->
+    <div class="card mt-3">
+      <div class="card-header">
+        Advertisement
+      </div>
+      <div class="card-body">
+        <!-- Konten iklan di sini -->
+        <div class="d-flex flex-column flex-md-row">
+          <div class="p-2 flex-fill">
+            {% include iklan.html %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

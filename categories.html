@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">{{ page.title }}</h1>
+      <div class="row">
+
+<h1>Categories</h1>
+
+  {% assign unique_categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq %}
+  {% for category in unique_categories %}
+  
+            <div class="col-md-4 mb-4">
+              <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                  <a href="{{ site.baseurl }}/categories/{{ category | downcase }}/" class="btn btn-success mt-auto">{{ category }}</a>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+title: MWNS
+email: myarachma92@gmail.com
+author: Muhammad Yusuf
+description: >- # Deskripsi situs
+  Master Wifi Network Solution adalah tempat solusi koneksi jaringan anda.
+url: "https://mwns.github.io"
+baseurl: ""
+permalink: /:categories/:title/
+paginate: 6
+paginate_path: "/page/:num/"
+
+collections:
+  posts:
+    output: true
+  categories:
+    output: true
+    permalink: /categories/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Muhammad Yusuf"
+      comments: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      author: "Muhammad Yusuf"
+      comments: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-toc
+  - jekyll-reading-time
+  - jekyll-time-to-read
+  - jekyll-google_search_console_verification_file
+
+toc:
+  min_level: 2
+  max_level: 6
+  no_toc_section_class: 'no_toc'
+  list_class: 'toc-list'
+  sublist_class: 'toc-sublist'
+  item_class: 'toc-list-item'
+  link_class: 'toc-link'
+  heading_levels: [2, 3, 4, 5, 6]
+  exclude_from_toc: []
+
+assets:
+  css: "/assets/css"
+
+data_files:
+  - files
+
+data_documentation:
+  - documentation
+
+include:
+  - assets
+
+# Konfigurasi Kramdown untuk sintaks highlighter
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'  # Kelas CSS untuk highlighter
+    span:
+      line_numbers: true    # Aktifkan nomor baris
+    block:
+      line_numbers: true    # Aktifkan nomor baris untuk blok kode
+      start_line: 1         # Mulai nomor baris dari 1
+
+# Contoh konfigurasi
+category_dir: categories

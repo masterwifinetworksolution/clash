@@ -1,0 +1,89 @@
+---
+layout: default
+title: Home
+---
+
+{% include iklan.html %}
+
+<!-- Card khusus untuk post "Selamat Datang di Master Wifi Network Solution" -->
+<div class="card mb-4 custom-background">
+  <img class="card-img-top" src="{{ post.image | default: '/assets/images/banner.jpg' }}" alt="Wellcome To Master Wifi Network Solution">
+  <div class="card-body d-flex flex-column">
+    <h4 class="card-title"><a href="/announcement/wellcome-to-masterwifinetworksolution/" class="card-link">Wellcome To Master Wifi Network Solution</a></h4>
+    <h5 class="card-subtitle mb-2 text-muted">
+      Update: 25 November 2024
+    </h5>
+    <h5 class="card-subtitle mb-2 text-muted">
+      Reading duration: 2 menit
+    </h5>
+    <h5 class="card-subtitle mb-5 text-muted">
+      Writer: <a href="/profile.html">Muhammad Yusuf</a>
+    </h5>
+    <a href="/announcement/wellcome-to-masterwifinetworksolution/" class="btn btn-success mt-auto">View Article</a>
+  </div>
+</div>
+
+<!-- Untuk featured posts dalam grid -->
+<div class="featured-posts">
+  <div class="row">
+    {% for post in paginator.posts %}
+    {% unless post.title == "Selamat Datang di Master Wifi Network Solution" %}
+    <div class="col-md-4 mb-4 d-flex align-items-stretch">
+      <div class="card h-100 grid-background">
+        <img class="card-img-top" src="{{ post.image | default: '/assets/images/banner.jpg' }}" alt="{{ post.title }}">
+        <div class="card-body d-flex flex-column">
+          <h4 class="card-title"><a href="{{ post.url }}" class="card-link">{{ post.title }}</a></h4>
+          <h5 class="card-subtitle mb-2 text-muted">
+            Update: {{ post.date | date: '%d %B %Y' }}
+          </h5>
+          <h5 class="card-subtitle mb-2 text-muted">
+            {% assign words = post.content | number_of_words %}
+            {% assign reading_time = words | divided_by:200 %}
+            Reading duration: {{ reading_time | ceil }} menit
+          </h5>
+          <h5 class="card-subtitle mb-2 text-muted">
+            Writer: <a href="/profile.html">{{ post.author }}</a>
+          </h5>
+          <a href="{{ post.url }}" class="btn btn-success mt-auto">View Article</a>
+        </div>
+      </div>
+    </div>
+    {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Paginasi Bootstrap -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if paginator.previous_page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo; Previous</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo; Previous</span>
+        </span>
+      </li>
+    {% endif %}
+
+    {% if paginator.next_page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ paginator.next_page_path | relative_url }}" aria-label="Next">
+          <span aria-hidden="true">Next &raquo;</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link" aria-label="Next">
+          <span aria-hidden="true">Next &raquo;</span>
+        </span>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+
+{% include iklan.html %}

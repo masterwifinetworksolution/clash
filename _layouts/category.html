@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">{{ page.title }}</h1>
+      <div class="row">
+        {% assign category = page.title | downcase %}
+        {% for post in site.posts %}
+          {% if post.categories contains category %}
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="{{ post.url }}" class="text-decoration-none">{{ post.title }}</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: "%B %d, %Y" }} oleh <a href="/profile.html" class="text-decoration-none">{{ post.author }}</a></h6>
+                  <p class="card-text">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+                  <a href="{{ post.url }}" class="btn btn-primary">Read more</a>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

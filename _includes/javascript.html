@@ -1,0 +1,332 @@
+<script>
+  function copyCode(button) {
+    const codeBlock = button.nextElementSibling.querySelector('code');
+    const textArea = document.createElement('textarea');
+    textArea.value = codeBlock.innerText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    button.innerText = 'Copied!';
+    setTimeout(() => {
+      button.innerText = 'Copy';
+    }, 2000);
+  }
+</script>
+
+<!-- Anti Adblock JS -->
+<script type="text/javascript">
+!function(a){var b,c=function(a){this.name="blockAdBlock",this.version="3.2.1",this.revision="r20190917",this.message={blocked:"adblocker detected",not_blocked:"adblocker not detected",init:"blockAdBlock initialized",error:"blockAdBlock error"},this.timers={s:0,m:0},this.remove={from:null,timeout:null},this.elements={from:null},this.detected=!1,"undefined"!=typeof a&&this.setOptions(a),this.create();var b=this;setTimeout(function(){return a(!0),!1},1)};a.blockAdBlock=new c}(window);
+</script>
+<script src="/assets/js/adblock-check.js"></script>
+
+<!-- code adsense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+<script>
+new DataTable('#example');
+</script>
+
+<script>
+new DataTable('#dockku');
+</script>
+
+<!-- Custom scripts for your site -->
+<script>
+  const posts = [
+    { title: 'Selamat Datang di Master Wifi Network Solution', url: '/announcement/2024/11/25/wellcome-to-masterwifinetworksolution/' },
+    { title: '5 Tips Ampuh untuk Meningkatkan Kecepatan WiFi di Rumah Anda', url: '/tips/wifi/teknologi/2024/11/23/cara-ampuh-titik/' },
+    { title: 'About Page', url: '/about/' },
+    { title: 'Categories Page', url: '/categories/' },
+    // Tambahkan semua posting dan halaman dengan judul dan URL mereka di sini
+  ];
+
+  function searchPosts() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const results = posts.filter(post => post.title.toLowerCase().includes(query));
+    const resultsContainer = document.getElementById('search-results');
+
+    resultsContainer.innerHTML = '';
+
+    if (results.length > 0) {
+      results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.innerHTML = `<a href="${result.url}">${result.title}</a>`;
+        resultsContainer.appendChild(resultItem);
+      });
+    } else {
+      resultsContainer.innerHTML = '<div>No results found</div>';
+    }
+  }
+</script>
+
+<script>
+  // Fungsi untuk menyimpan data pengunjung ke localStorage (contoh sederhana)
+  function incrementVisitorCount() {
+    let totalVisitors = localStorage.getItem('totalVisitors') || 0;
+    let todayVisitors = localStorage.getItem('todayVisitors') || 0;
+    const lastVisit = localStorage.getItem('lastVisit') || new Date().toISOString();
+
+    // Jika hari baru, reset pengunjung hari ini
+    if (new Date(lastVisit).toDateString() !== new Date().toDateString()) {
+      todayVisitors = 0;
+    }
+
+    totalVisitors++;
+    todayVisitors++;
+    localStorage.setItem('totalVisitors', totalVisitors);
+    localStorage.setItem('todayVisitors', todayVisitors);
+    localStorage.setItem('lastVisit', new Date().toISOString());
+
+    document.getElementById('total-visitors').textContent = totalVisitors + ' total visitors';
+    document.getElementById('today-visitors').textContent = todayVisitors + ' visitors today';
+    document.getElementById('country-visitors').textContent = 'Visitors from: ' + 'N/A';
+  }
+</script>
+
+<script>
+  function playVideo(videoId) {
+      var player = document.getElementById('player');
+      player.src = 'https://www.youtube.com/embed/' + videoId;
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+    emailjs.init("Gpr-CVHpfLTtQT4ED990N"); // Ganti YOUR_USER_ID dengan Public Key dari EmailJS
+  })();
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Cegah form dari submit secara tradisional
+
+    // Kirim form dengan EmailJS
+    emailjs.sendForm('service_xbgrl3a', 'template_rp3ha8z', this)
+      .then(function(response) {
+        alert('SUCCESS!', response.status, response.text);
+        document.getElementById('contact-form').reset(); // Kosongkan form
+      }, function(error) {
+        alert('FAILED...', error);
+      });
+  });
+</script>
+
+<!-- Copy Code -->
+<script>
+  function copyCode(button) {
+    const codeBlock = button.parentElement.nextElementSibling;
+    const textArea = document.createElement('textarea');
+    textArea.value = codeBlock.innerText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('Code copied to clipboard');
+  }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    if (!localStorage.getItem('tosAccepted')) {
+      document.getElementById('tosPanel').style.display = 'block';
+    }
+  });
+
+  function closeTosPanel() {
+    document.getElementById('tosPanel').style.display = 'none';
+  }
+
+  function acceptTos() {
+    localStorage.setItem('tosAccepted', 'true');
+    document.getElementById('tosPanel').style.display = 'none';
+  }
+
+  function showPrivacyPolicy() {
+    document.getElementById('privacyPolicyPanel').style.display = 'block';
+  }
+
+  function closePrivacyPolicyPanel() {
+    document.getElementById('privacyPolicyPanel').style.display = 'none';
+  }
+
+  function showDisclaimer() {
+    document.getElementById('disclaimerPanel').style.display = 'block';
+  }
+
+  function closeDisclaimerPanel() {
+    document.getElementById('disclaimerPanel').style.display = 'none';
+  }
+</script>
+
+
+<!-- ini adalah untuk light dan dark mode -->
+
+<script>
+  const toggleModeButton = document.getElementById('toggle-mode');
+  const body = document.body;
+  const iconSun = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
+
+  toggleModeButton.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-bs-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    body.setAttribute('data-bs-theme', newTheme);
+
+    // Update Navbar, Sidebar, Main Content, Aside, Card, Card Title, and Card Subtitle classes based on the theme
+    const navbar = document.getElementById('mainNavbar');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('main');
+    const asideContent = document.querySelector('aside');
+    const cards = document.querySelectorAll('.card');
+    const cardTitles = document.querySelectorAll('.card-title');
+    const cardSubtitles = document.querySelectorAll('.card-subtitle');
+
+    if (newTheme === 'dark') {
+      navbar.classList.remove('navbar-light', 'bg-light');
+      navbar.classList.add('navbar-dark', 'bg-dark');
+
+      sidebar.classList.remove('bg-light', 'text-dark');
+      sidebar.classList.add('bg-dark', 'text-light');
+
+      mainContent.classList.remove('bg-light', 'text-dark');
+      mainContent.classList.add('bg-dark', 'text-light');
+
+      asideContent.classList.remove('bg-light', 'text-dark');
+      asideContent.classList.add('bg-dark', 'text-light');
+
+      cards.forEach(card => {
+        card.classList.remove('bg-light', 'text-dark');
+        card.classList.add('bg-dark', 'text-light');
+      });
+
+      cardTitles.forEach(title => {
+        title.classList.add('text-light');
+        title.classList.remove('text-dark');
+      });
+
+      cardSubtitles.forEach(subtitle => {
+        subtitle.classList.add('text-light');
+        subtitle.classList.remove('text-dark');
+      });
+
+      iconSun.classList.add('d-none');
+      iconMoon.classList.remove('d-none');
+    } else {
+      navbar.classList.remove('navbar-dark', 'bg-dark');
+      navbar.classList.add('navbar-light', 'bg-light');
+
+      sidebar.classList.remove('bg-dark', 'text-light');
+      sidebar.classList.add('bg-light', 'text-dark');
+
+      mainContent.classList.remove('bg-dark', 'text-light');
+      mainContent.classList.add('bg-light', 'text-dark');
+
+      asideContent.classList.remove('bg-dark', 'text-light');
+      asideContent.classList.add('bg-light', 'text-dark');
+
+      cards.forEach(card => {
+        card.classList.remove('bg-dark', 'text-light');
+        card.classList.add('bg-light', 'text-dark');
+      });
+
+      cardTitles.forEach(title => {
+        title.classList.add('text-dark');
+        title.classList.remove('text-light');
+      });
+
+      cardSubtitles.forEach(subtitle => {
+        subtitle.classList.add('text-dark');
+        subtitle.classList.remove('text-light');
+      });
+
+      iconSun.classList.remove('d-none');
+      iconMoon.classList.add('d-none');
+    }
+
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Restore the theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    body.setAttribute('data-bs-theme', savedTheme);
+
+    // Update Navbar, Sidebar, Main Content, Aside, Card, Card Title, and Card Subtitle classes based on the saved theme
+    const navbar = document.getElementById('mainNavbar');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('main');
+    const asideContent = document.querySelector('aside');
+    const cards = document.querySelectorAll('.card');
+    const cardTitles = document.querySelectorAll('.card-title');
+    const cardSubtitles = document.querySelectorAll('.card-subtitle');
+
+    if (savedTheme === 'dark') {
+      navbar.classList.remove('navbar-light', 'bg-light');
+      navbar.classList.add('navbar-dark', 'bg-dark');
+
+      sidebar.classList.remove('bg-light', 'text-dark');
+      sidebar.classList.add('bg-dark', 'text-light');
+
+      mainContent.classList.remove('bg-light', 'text-dark');
+      mainContent.classList.add('bg-dark', 'text-light');
+
+      asideContent.classList.remove('bg-light', 'text-dark');
+      asideContent.classList.add('bg-dark', 'text-light');
+
+      cards.forEach(card => {
+        card.classList.remove('bg-light', 'text-dark');
+        card.classList.add('bg-dark', 'text-light');
+      });
+
+      cardTitles.forEach(title => {
+        title.classList.add('text-light');
+        title.classList.remove('text-dark');
+      });
+
+      cardSubtitles.forEach(subtitle => {
+        subtitle.classList.add('text-light');
+        subtitle.classList.remove('text-dark');
+      });
+
+      iconSun.classList.add('d-none');
+      iconMoon.classList.remove('d-none');
+    } else {
+      navbar.classList.remove('navbar-dark', 'bg-dark');
+      navbar.classList.add('navbar-light', 'bg-light');
+
+      sidebar.classList.remove('bg-dark', 'text-light');
+      sidebar.classList.add('bg-light', 'text-dark');
+
+      mainContent.classList.remove('bg-dark', 'text-light');
+      mainContent.classList.add('bg-light', 'text-dark');
+
+      asideContent.classList.remove('bg-dark', 'text-light');
+      asideContent.classList.add('bg-light', 'text-dark');
+
+      cards.forEach(card => {
+        card.classList.remove('bg-dark', 'text-light');
+        card.classList.add('bg-light', 'text-dark');
+      });
+
+      cardTitles.forEach(title => {
+        title.classList.add('text-dark');
+        title.classList.remove('text-light');
+      });
+
+      cardSubtitles.forEach(subtitle => {
+        subtitle.classList.add('text-dark');
+        subtitle.classList.remove('text-light');
+      });
+
+      iconSun.classList.remove('d-none');
+      iconMoon.classList.add('d-none');
+    }
+  }
+</script>
+

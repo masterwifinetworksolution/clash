@@ -1,0 +1,88 @@
+---
+layout: default
+---
+
+<div class="container mt-4">
+  <div class="post-content">
+    <nav aria-label="breadcrumb" class="p-3 rounded">
+      <h3 class="card-subtitle mb-2">Title: <b>{{ page.title }}</b></h3>
+      <h4 class="card-subtitle mb-2">Update: {{ page.date | date: '%d %B %Y' }}</h4>
+      <h4 class="card-subtitle mb-2">
+        {% for category in page.categories %}
+          Category: <a href="{{ site.baseurl }}/categories/{{ category | downcase }}/">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
+        {% endfor %}
+      </h4>
+      {% assign words = page.content | number_of_words %}
+      {% assign reading_time = words | divided_by:200 %} <!-- Asumsi kecepatan baca 200 kata per menit -->
+      <h4 class="card-subtitle mb-2">Reading duration: {{ reading_time | ceil }} minute</h4>
+      <h4 class="card-subtitle mb-2">Penulis: <a href="/profile.html">{{ site.author }}</a></h4>
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
+        {% for category in page.categories %}
+          <li class="breadcrumb-item"><a href="{{ site.baseurl }}/categories/{{ category | downcase }}/">{{ category }}</a></li>
+        {% endfor %}
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Tempatkan ToC di sini -->
+  <div class="toc-panel bg-secondary mt-4 p-3 rounded">
+    <nav class="toc">
+      {% include toc.html html=content %}
+    </nav>
+  </div>
+
+  <!-- Kartu iklan -->
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5>Advertisement</h5>
+    </div>
+    <div class="card-body">
+      {% include iklan.html %}
+    </div>
+  </div>
+
+  <div class="post-content mt-4">
+    <div>
+      {{ content }}
+    </div>
+  </div>
+
+  <!-- Advertisement card -->
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5>Advertisement</h5>
+    </div>
+    <div class="card-body">
+      {% include iklan.html %}
+    </div>
+  </div>
+  
+  <!-- Tombol bagikan -->
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5>Share Documentation Simaster</h5>
+    </div>
+    <div class="card-body">
+      <div class="share-buttons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-primary"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.x.com/intent/tweet?url={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-info"><i class="fab fa-xing"></i></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/?text={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://telegram.me/share/url?url={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-primary"><i class="fab fa-telegram-plane"></i></a>
+        <a href="mailto:?subject={{ page.title }}&body={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-danger"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kartu komentar -->
+  <div class="card mt-4 mb-4">
+    <div class="card-header">
+      <h5>Comment</h5>
+    </div>
+    <div class="card-body">
+      {% include comments.html %}
+    </div>
+  </div>
+</div>

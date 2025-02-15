@@ -1,0 +1,58 @@
+---
+layout: page
+title: Files
+permalink: /files/
+---
+<hr>
+<div class="container mt-5">
+    <table id="dockku" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in site.data.files %}
+            <tr>
+                <td>{{ file.name }}</td>
+                <td>{{ file.type }}</td>
+                <td>{{ file.size }}</td>
+                <td>
+                    {% if file.link == "#" %}
+                        <a href="{{ file.link }}" class="btn btn-danger mt-auto">None</a>
+                    {% else %}
+                        <a href="{{ file.link }}" class="btn btn-success mt-auto" target="_blank">Download</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#dockku').DataTable({
+            "paging": true,
+            "searching": true
+        });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+        var filter = this.value.toLowerCase();
+        var categories = document.querySelectorAll('tbody tr');
+
+        categories.forEach(function(row) {
+            var title = row.querySelector('td a').textContent.toLowerCase();
+            var category = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+            if (title.includes(filter) || category.includes(filter)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+</script>

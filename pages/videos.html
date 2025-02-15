@@ -1,0 +1,113 @@
+---
+layout: yt
+title: Videos
+permalink: /videos.html
+---
+
+  <style>
+    section {
+      padding-top: 2.5%;
+      padding-bottom: 2.5%;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .playlistBx {
+      border: 2px solid green;
+      overflow-y: auto;
+      height: 315px; /* Menyesuaikan tinggi pemutar video */
+    }
+    .AllLessons {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .list-group-item.active {
+      background-color: #1d3541;
+      border-color: #1d3541;
+      color: white;
+    }
+  </style>
+  <section class="my-5">
+    <div class="container">
+      <h2 class="title mb-4">Videos</h2>
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <div id="video_player" class="ratio ratio-16x9">
+            <iframe id="main-Video" src="https://www.youtube.com/embed/TOG-bocz8F8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="AllLessons"></h5>
+          <div class="playlistBx p-3">
+            <ul class="list-group" id="playlist"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    let allVideos = [
+      { name: "Cara limit bandwidth di router Tenda", src: "https://www.youtube.com/embed/TOG-bocz8F8", id: "vid_1" },
+      { name: "Cara mengatasi router Tenda tidak tersambung internet", src: "https://www.youtube.com/embed/R8gq5lr_haQ", id: "vid_2" },
+      { name: "VPNBypass OpenWRT install dan konfigurasi", src: "https://www.youtube.com/embed/y7Li7qFC31M", id: "vid_3" },
+      { name: "Mengatasi WiFi tidak bisa konek ke STB OpenWRT", src: "https://www.youtube.com/embed/tr2adr_ZkMI", id: "vid_4" },
+      { name: "Mengatasi DHCP, DNS, update list, install IPK yang gagal di OpenWRT", src: "https://www.youtube.com/embed/kAn6duWkDEs", id: "vid_5" },
+      { name: "Install firmware OpenWRT di Android dengan OTG", src: "https://www.youtube.com/embed/1v9QHP_-zpo", id: "vid_6" },
+      { name: "FIX - Setting VPNBypass OpenWRT", src: "https://www.youtube.com/embed/L_H49lIOJG8", id: "vid_7" },
+      { name: "DNSMasq Full untuk VPNBypass OpenWRT", src: "https://www.youtube.com/embed/n4mHyrdK39U", id: "vid_8" },
+      { name: "Mengatasi tidak koneksi hotspot dan internet di OpenWRT", src: "https://www.youtube.com/embed/B1o-JnWWrWg", id: "vid_9" },
+      { name: "Koneksi internet OpenWRT terputus? Watchcat saja", src: "https://www.youtube.com/embed/toHGTmHCrYE", id: "vid_10" },
+      { name: "Install ZeroTier remote OpenWRT via Android", src: "https://www.youtube.com/embed/KM444TuMWrI", id: "vid_11" },
+      { name: "Setting ZTE F609 sebagai bridge akses point STB OpenWRT", src: "https://www.youtube.com/embed/5ypncHC-LUo", id: "vid_12" },
+      { name: "Mengatasi WAN IP koneksi dan klien di OpenWRT", src: "https://www.youtube.com/embed/byubft70FW4", id: "vid_13" },
+      { name: "Auto rekonek libernet jadikan internet anti bengong", src: "https://www.youtube.com/embed/AugiRksTLAU", id: "vid_14" },
+      { name: "Cara remote Tenda N301 langsung dari server OpenWRT", src: "https://www.youtube.com/embed/X_YJSF7_2iY", id: "vid_15" },
+      { name: "Memasang antena bekas Tenda dan kipas untuk STB OpenWRT", src: "https://www.youtube.com/embed/uIRHnQgovb0", id: "vid_16" },
+    ];
+  
+    const mainVideo = document.querySelector('#main-Video');
+    const playlist = document.getElementById('playlist');
+    const AllLessons = document.querySelector('.AllLessons');
+    const videoTitle = document.querySelector('.title');
+  
+    AllLessons.innerHTML = `${allVideos.length} Daftar Video`;
+  
+    let videoIndex = 1;
+    window.addEventListener('load', () => {
+      loadVideo(videoIndex);
+      playingNow();
+    });
+  
+    function loadVideo(indexNumb) {
+      mainVideo.src = allVideos[indexNumb - 1].src;
+      videoTitle.innerHTML = `${indexNumb}. ${allVideos[indexNumb - 1].name}`;
+    }
+  
+    for (let i = 0; i < allVideos.length; i++) {
+      let liTag = `<li class="list-group-item" li-index="${i + 1}">
+        <div class="row">
+          <span>${i + 1}. ${allVideos[i].name}</span>
+        </div>
+      </li>`;
+      playlist.insertAdjacentHTML('beforeend', liTag);
+    }
+  
+    const allLiTags = playlist.querySelectorAll('li');
+    function playingNow() {
+      for (let j = 0; j < allVideos.length; j++) {
+        allLiTags[j].classList.remove('active');
+        if (allLiTags[j].getAttribute('li-index') == videoIndex) {
+          allLiTags[j].classList.add('active');
+        }
+        allLiTags[j].setAttribute("onclick", "clicked(this)");
+      }
+    }
+  
+    function clicked(element) {
+      videoIndex = element.getAttribute('li-index');
+      loadVideo(videoIndex);
+      playingNow();
+    }
+  </script>
